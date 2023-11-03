@@ -1,0 +1,20 @@
+{"frames": {
+
+"pixelBill.png":
+{
+	"frame": {"x":0,"y":0,"w":300,"h":300},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":300},
+	"sourceSize": {"w":300,"h":300}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "bill.png",
+	"format": "RGBA8888",
+	"size": {"w":300,"h":300},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:a4131c63f686c2926dfa7ed9959c05c9:f36c24e661a9532d311f7798f5af9836:7728b6d2ec6329f9b8ad7ee5919f80de$"
+}
+}

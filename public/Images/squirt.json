@@ -1,0 +1,87 @@
+{"frames": {
+
+"billHead1.png":
+{
+	"frame": {"x":0,"y":0,"w":205,"h":200},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":205,"h":200},
+	"sourceSize": {"w":205,"h":200}
+},
+"billHead2.png":
+{
+	"frame": {"x":205,"y":0,"w":205,"h":200},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":205,"h":200},
+	"sourceSize": {"w":205,"h":200}
+},
+"billHead3.png":
+{
+	"frame": {"x":410,"y":0,"w":205,"h":200},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":205,"h":200},
+	"sourceSize": {"w":205,"h":200}
+},
+"billHead4.png":
+{
+	"frame": {"x":615,"y":0,"w":205,"h":200},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":205,"h":200},
+	"sourceSize": {"w":205,"h":200}
+},
+"billHead5.png":
+{
+	"frame": {"x":820,"y":0,"w":205,"h":200},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":205,"h":200},
+	"sourceSize": {"w":205,"h":200}
+},
+"billHead6.png":
+{
+	"frame": {"x":1025,"y":0,"w":205,"h":200},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":205,"h":200},
+	"sourceSize": {"w":205,"h":200}
+},
+"billHead7.png":
+{
+	"frame": {"x":1230,"y":0,"w":205,"h":200},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":205,"h":200},
+	"sourceSize": {"w":205,"h":200}
+},
+"billHead8.png":
+{
+	"frame": {"x":1435,"y":0,"w":205,"h":200},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":205,"h":200},
+	"sourceSize": {"w":205,"h":200}
+},
+"billHead9.png":
+{
+	"frame": {"x":1640,"y":0,"w":205,"h":200},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":205,"h":200},
+	"sourceSize": {"w":205,"h":200}
+}},
+"animations": {
+	"billHead": ["billHead1.png","billHead2.png","billHead3.png","billHead4.png","billHead5.png","billHead6.png","billHead7.png","billHead8.png","billHead9.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "squirt.png",
+	"format": "RGBA8888",
+	"size": {"w":1845,"h":200},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:518c639b6b773aff35a708a750646f93:e5a37d7c862f735842f0cccd61611868:19903639804e1096e0a327b0c8e9aa3e$"
+}
+}

@@ -1,0 +1,87 @@
+{"frames": {
+
+"handsBill1.png":
+{
+	"frame": {"x":0,"y":0,"w":240,"h":230},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":240,"h":230},
+	"sourceSize": {"w":240,"h":230}
+},
+"handsBill2.png":
+{
+	"frame": {"x":240,"y":0,"w":240,"h":230},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":240,"h":230},
+	"sourceSize": {"w":240,"h":230}
+},
+"handsBill3.png":
+{
+	"frame": {"x":0,"y":230,"w":240,"h":230},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":240,"h":230},
+	"sourceSize": {"w":240,"h":230}
+},
+"handsBill4.png":
+{
+	"frame": {"x":240,"y":230,"w":240,"h":230},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":240,"h":230},
+	"sourceSize": {"w":240,"h":230}
+},
+"handsBill5.png":
+{
+	"frame": {"x":0,"y":460,"w":240,"h":230},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":240,"h":230},
+	"sourceSize": {"w":240,"h":230}
+},
+"handsBill6.png":
+{
+	"frame": {"x":240,"y":460,"w":240,"h":230},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":240,"h":230},
+	"sourceSize": {"w":240,"h":230}
+},
+"handsBill7.png":
+{
+	"frame": {"x":0,"y":690,"w":240,"h":230},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":240,"h":230},
+	"sourceSize": {"w":240,"h":230}
+},
+"handsBill8.png":
+{
+	"frame": {"x":240,"y":690,"w":240,"h":230},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":240,"h":230},
+	"sourceSize": {"w":240,"h":230}
+},
+"handsBill9.png":
+{
+	"frame": {"x":0,"y":920,"w":240,"h":230},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":240,"h":230},
+	"sourceSize": {"w":240,"h":230}
+}},
+"animations": {
+	"billHands": ["handsBill1.png","handsBill2.png","handsBill3.png","handsBill4.png","handsBill5.png","handsBill6.png","handsBill7.png","handsBill8.png","handsBill9.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "billThrows.png",
+	"format": "RGBA8888",
+	"size": {"w":480,"h":1150},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:aa068e5c7148fc6a590cdfd9b9966fe3:4fc741be7b930f38c67a64d65ffeec90:e7fc407cc0be4cf6204e7e933a49de10$"
+}
+}

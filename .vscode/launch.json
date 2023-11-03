@@ -1,0 +1,27 @@
+{
+  "autoAttachChildProcesses": true,
+  "console": "integratedTerminal",
+  "version": "0.2.0",
+  "resolveSourceMapLocations": ["${workspaceFolder}/**", "!**/node_modules/**"],
+  "type": "pwa-node",
+  "configurations": [
+    {
+      "name": "Launch chrome",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:3000"
+    },
+    {
+      "name": "Launch chrome and debug",
+      "cwd": "${workspaceFolder}/src",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "npm run dev",
+      "serverReadyAction": {
+        "action": "startDebugging",
+        "pattern": "Local:",
+        "name": "Launch chrome"
+      }
+    }
+  ]
+}
