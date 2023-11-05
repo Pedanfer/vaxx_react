@@ -2,13 +2,13 @@
 
 import * as PIXI from "pixi.js";
 import {
-  SpriteConfig,
   billHandsSprite,
   billSprite,
   createSyringue,
   frameBackground,
+  sendCharacter,
 } from "./sprite-config";
-import { PixiApp, jabContainer } from "./pixi-app";
+import { frameContainer, jabContainer } from "./pixi-app";
 // import * as typography from "./typography";
 import * as data from "./resize-data";
 import { resize } from "./resize-data";
@@ -33,13 +33,13 @@ function createTickers() {
     //     soundConfig.soundLibrary.play("throwSound");
     //   }
   });
-  throwTicker.minFPS = 3;
-  throwTicker.maxFPS = 3;
+  //TODO: Interesting for power-ups!
+  throwTicker.minFPS = 2;
+  throwTicker.maxFPS = 2;
 
   //  Tickers: PIXI-specific loops made to iterate at the same time than frame
   //  refreshment (or customizable), for animation mostly.
-  vacMovement = new PIXI.Ticker();
-  vacMovement.add(() => {
+  vacMovement = new PIXI.Ticker().add(() => {
     let ratio = resize.text.ratio;
     for (let vac of jabContainer.children) {
       if (vac.x > frameBackground.x + frameBackground.width) {
@@ -48,7 +48,6 @@ function createTickers() {
       vac.x += 5 * ratio;
     }
   });
-  vacMovement.start();
 }
 
 export function playerCursorSync(e: PIXI.FederatedPointerEvent) {
@@ -66,18 +65,18 @@ export function getCharStartingPoint(e: PIXI.FederatedPointerEvent) {
 }
 
 export function resumeGame(e: PIXI.FederatedPointerEvent) {
-  PixiApp.frameContainer.filters = [];
+  frameContainer.filters = [];
   //Main.app.stage.removeChild(pauseText);
-  SpriteConfig.sendCharacter(e);
+  sendCharacter(e);
   //soundLibrary.resumeAll();
   vacMovement.start();
 }
 
 export function pauseGame() {
-  SpriteConfig.billSprite.gotoAndStop(1);
-  SpriteConfig.billHandsSprite.gotoAndStop(1);
-  //SpriteConfig.sendCorrectPauseTextColor();
-  PixiApp.frameContainer.filters = [pauseTint];
+  billSprite.gotoAndStop(1);
+  billHandsSprite.gotoAndStop(1);
+  //sendCorrectPauseTextColor();
+  frameContainer.filters = [pauseTint];
   throwTicker.stop();
   vacMovement.stop();
   //soundLibrary.pauseAll();
@@ -89,8 +88,8 @@ export function pauseGame() {
 //   }
 //   pauseText = typography.sendPauseText(color);
 //   pauseText.position.set(
-//     SpriteConfig.frame.x * 4.8,
-//     SpriteConfig.frame.y + SpriteConfig.frame.height / 2.9
+//     frame.x * 4.8,
+//     frame.y + frame.height / 2.9
 //   );
 //  PixiApp.app.stage.addChild(pauseText);
 // }

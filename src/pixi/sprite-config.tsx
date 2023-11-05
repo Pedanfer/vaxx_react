@@ -10,7 +10,7 @@ import {
 // import * as typography from "./typography";
 import * as data from "./resize-data";
 import { FederatedPointerEvent } from "pixi.js";
-import { PixiApp, frameContainer } from "./pixi-app";
+import { app, charContainer, frameContainer, jabContainer } from "./pixi-app";
 
 // export let title = typography.addText();
 export let frameIndex: number;
@@ -75,11 +75,11 @@ export function createSyringue() {
   );
   syringue.width = data.resize.vac.width;
   syringue.height = data.resize.vac.height;
-  PixiApp.jabContainer.addChild(syringue);
+  jabContainer.addChild(syringue);
   return syringue;
 }
 
-async function setup() {
+async function spriteLogic() {
   billSprite = await createBillSprite("billHead");
   billHandsSprite = await createBillSprite("billHands");
 
@@ -97,9 +97,36 @@ async function setup() {
   billSprite.onComplete = () => billSprite.gotoAndStop(1);
   billHandsSprite.onComplete = () => billHandsSprite.gotoAndStop(1);
 
+  configDelays();
+  // billSprite.once("pointerdown", (e) => {
+  //   soundConfig.musicStartTicker.start();
+  // });
+}
+
+function configDelays() {
+  let delayAnimateTimer: NodeJS.Timeout;
+  let delayThrow: boolean = false;
+  let delayAnimation: boolean = false;
+  const msWaitToAnimate = 300;
+
   frameContainer.onpointerdown = () => {
     billSprite.gotoAndStop(0);
     billHandsSprite.gotoAndStop(0);
+
+    // Time out that resets with user click to avoid constant animation resets during 300ms
+    delayAnimation = true;
+    clearTimeout(delayAnimateTimer);
+    delayAnimateTimer = setTimeout(() => {
+      delayAnimation = false;
+    }, msWaitToAnimate);
+
+    // Time out so that it can only fire syringues every second to avoid cheating
+    if (delayThrow) return;
+    delayThrow = true;
+    setTimeout(() => {
+      delayThrow = false;
+    }, 500);
+
     // TODO: soundConfig
     // soundConfig.billSoundLoop();
     // soundConfig.soundLibrary.play("throwSound");
@@ -109,15 +136,14 @@ async function setup() {
 
   frameContainer.onpointerup = () => {
     setTimeout(() => {
-      billSprite.gotoAndPlay(1);
-      billHandsSprite.gotoAndPlay(1);
-    }, 300);
+      if (!delayAnimation) {
+        billSprite.gotoAndPlay(1);
+        billHandsSprite.gotoAndPlay(1);
+      }
+    }, msWaitToAnimate);
+
     throwTicker.stop();
   };
-
-  // billSprite.once("pointerdown", (e) => {
-  //   soundConfig.musicStartTicker.start();
-  // });
 }
 
 async function loadAssetsAndSetup() {
@@ -128,7 +154,7 @@ async function loadAssetsAndSetup() {
   });
 
   PIXI.Assets.loadBundle("main").then(async () => {
-    await setup();
+    await spriteLogic();
   });
 }
 
@@ -188,8 +214,8 @@ export function sendCharacter(event: FederatedPointerEvent) {
   billHandsSprite.gotoAndStop(1);
 
   frameSync_charResize();
-  PixiApp.charContainer.addChild(billSprite);
-  PixiApp.charContainer.addChild(billHandsSprite);
+  charContainer.addChild(billSprite);
+  charContainer.addChild(billHandsSprite);
 
   billSprite.position.set(charPosition.x, charPosition.y);
   billHandsSprite.position.set(
@@ -212,13 +238,13 @@ export async function init() {
     function () {
       data.createResizeData();
       fillFrameArray();
-      //PixiApp.app.stage.removeChild(background, title);
-      PixiApp.frameContainer.removeChild(frameBackground);
+      //app.stage.removeChild(background, title);
+      frameContainer.removeChild(frameBackground);
       background = backGroundWithHole();
       frameBackground = frameBackgrounds[frameIndex];
       // title = typography.addText("loop");
-      //PixiApp.app.stage.addChild(background, title);
-      PixiApp.frameContainer.addChildAt(frameBackground, 0);
+      //app.stage.addChild(background, title);
+      frameContainer.addChildAt(frameBackground, 0);
       frameSync_charResize("windowAdjust");
       adjustVirusSize();
       //resize_relocateProjectiles();
@@ -227,8 +253,6 @@ export async function init() {
     true
   );
 }
-
-export * as SpriteConfig from "./sprite-config";
 
 // export let title = typography.addText();
 
@@ -249,7 +273,7 @@ function adjustVirusSize() {
     0.24 * data.resize.text.ratio,
     0.24 * data.resize.text.ratio
   );
-  PixiApp.app.stage.addChild(virusSprite, virusSprite2);
+  app.stage.addChild(virusSprite, virusSprite2);
 }
 
 // TODO: update typography
@@ -258,10 +282,10 @@ function adjustVirusSize() {
 //     if (frameIndex == frames.length - 1) {
 //       frameIndex = -1;
 //     }
-//     PixiApp.frameContainer.removeChild(frame);
+//     frameContainer.removeChild(frame);
 //     frame = frames[++frameIndex];
 //     sendCorrectPauseTextColor();
-//     PixiApp.frameContainer.addChildAt(frame, 0);
+//     frameContainer.addChildAt(frame, 0);
 //   };
 // }
 
@@ -275,10 +299,10 @@ function adjustVirusSize() {
 
 // export function resize_relocateProjectiles() {
 //   let vacRatio = {
-//     x: data.resize.vac.width / PixiApp.jabContainer.children[0].width,
-//     y: data.resize.vac.height / PixiApp.jabContainer.children[0].height,
+//     x: data.resize.vac.width / jabContainer.children[0].width,
+//     y: data.resize.vac.height / jabContainer.children[0].height,
 //   };
-//   for (let vac of PixiApp.jabContainer.children) {
+//   for (let vac of jabContainer.children) {
 //     vac.x = vac.x * vacRatio.x;
 //     vac.y = vac.y * vacRatio.y;
 //     vac.width = data.resize.vac.width;

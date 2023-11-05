@@ -74,5 +74,3 @@ function createApp() {
   PIXI.settings.RESOLUTION = window.devicePixelRatio;
   return app;
 }
-
-export * as PixiApp from "./pixi-app";
