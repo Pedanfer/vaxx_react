@@ -8,6 +8,7 @@ import {
   init as initSprites,
 } from "./sprite-config";
 import { initMovLogic, pauseGame, resumeGame } from "./movement-logic";
+import { loadSounds } from "./sound-config";
 
 export let app: PIXI.Application<HTMLCanvasElement>;
 export let charContainer: PIXI.Container;
@@ -21,7 +22,7 @@ export async function init(): Promise<PIXI.Application<HTMLCanvasElement>> {
   resize.createResizeData();
   app = createApp();
   await initSprites();
-  //  Application setup
+  loadSounds();
   jabContainer = createStage();
   initMovLogic();
   requestAnimationFrame(() => app.renderer.render(app.stage));

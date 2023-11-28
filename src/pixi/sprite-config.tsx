@@ -11,6 +11,7 @@ import {
 import * as data from "./resize-data";
 import { FederatedPointerEvent } from "pixi.js";
 import { app, charContainer, frameContainer, jabContainer } from "./pixi-app";
+import { billSoundLoop, generalSounds, musicStartTicker } from "./sound-config";
 
 // export let title = typography.addText();
 export let frameIndex: number;
@@ -98,9 +99,9 @@ async function spriteLogic() {
   billHandsSprite.onComplete = () => billHandsSprite.gotoAndStop(1);
 
   configDelays();
-  // billSprite.once("pointerdown", (e) => {
-  //   soundConfig.musicStartTicker.start();
-  // });
+  billSprite.once("pointerdown", (e) => {
+    musicStartTicker.start();
+  });
 }
 
 function configDelays() {
@@ -127,9 +128,8 @@ function configDelays() {
       delayThrow = false;
     }, 500);
 
-    // TODO: soundConfig
-    // soundConfig.billSoundLoop();
-    // soundConfig.soundLibrary.play("throwSound");
+    billSoundLoop();
+    generalSounds.play("throwSound");
     createSyringue();
     throwTicker.start();
   };

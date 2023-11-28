@@ -12,6 +12,7 @@ import { frameContainer, jabContainer } from "./pixi-app";
 // import * as typography from "./typography";
 import * as data from "./resize-data";
 import { resize } from "./resize-data";
+import { billSounds, generalSounds } from "./sound-config";
 // import { soundLibrary } from "./soundConfig";
 
 export let pauseText: boolean;
@@ -29,9 +30,9 @@ function createTickers() {
   throwTicker = new PIXI.Ticker();
   throwTicker.add(() => {
     createSyringue();
-    //   if (!soundConfig.soundLibrary.find("throwSound").isPlaying) {
-    //     soundConfig.soundLibrary.play("throwSound");
-    //   }
+    if (!generalSounds.find("throwSound").isPlaying) {
+      generalSounds.play("throwSound");
+    }
   });
   //TODO: Interesting for power-ups!
   throwTicker.minFPS = 2;
@@ -68,7 +69,8 @@ export function resumeGame(e: PIXI.FederatedPointerEvent) {
   frameContainer.filters = [];
   //Main.app.stage.removeChild(pauseText);
   sendCharacter(e);
-  //soundLibrary.resumeAll();
+  generalSounds.resumeAll();
+  billSounds.resumeAll();
   vacMovement.start();
 }
 
@@ -79,7 +81,8 @@ export function pauseGame() {
   frameContainer.filters = [pauseTint];
   throwTicker.stop();
   vacMovement.stop();
-  //soundLibrary.pauseAll();
+  generalSounds.pauseAll();
+  billSounds.pauseAll();
 }
 
 // export function addPauseText(option, color) {
